@@ -32,6 +32,12 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
     Route::get('coach', 'CoachController@coach');
+    Route::post('Nutrition', 'NutritionController@SaveNutrition');
+    Route::get('getNutrition', 'NutritionController@getNutrition');
+    Route::delete('deleteNutrition/{id}' , 'NutritionController@deleteNutrition');
+    Route::get('updateNutrition/{id}' , 'NutritionController@updateNutrition');
+    Route::put('editNutrition' , 'NutritionController@editNutrition');
+    Route::get('Nutrition/{id}' , 'NutritionController@Nutrition');
  
 
 });
