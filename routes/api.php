@@ -38,6 +38,13 @@ Route::group([
     Route::get('updateNutrition/{id}' , 'NutritionController@updateNutrition');
     Route::put('editNutrition' , 'NutritionController@editNutrition');
     Route::get('Nutrition/{id}' , 'NutritionController@Nutrition');
+    Route::post('upload', 'NutritionController@upload');
+    Route::post('SaveNutritionniste', 'NutritionnisteController@SaveNutritionniste');
+    Route::get('getNutritionniste', 'NutritionnisteController@getNutritionniste');
+    Route::delete('deleteNutritionniste/{id}' , 'NutritionnisteController@deleteNutritionniste');
+    Route::get('updateNutritionniste/{id}' , 'NutritionnisteController@updateNutritionniste');
+    Route::put('editNutritionniste' , 'NutritionnisteController@editNutritionniste');
+    Route::post('SaveExercice', 'ExerciceController@SaveExercice');
  
 
 });
