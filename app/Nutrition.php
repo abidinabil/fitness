@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nutrition extends Model
 {
-    protected $table = "nutritions";
+    protected $table = "nutrition";
 
     protected $fillable = [
         'title', 'text', 'subtext','image'

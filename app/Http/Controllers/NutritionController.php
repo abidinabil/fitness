@@ -9,105 +9,31 @@ class NutritionController extends Controller
 {
 
    
-public function SaveNutrition(Request $request){
+    public function SaveNutrition(Request $request){
         
-     
-        $image = $request->file('image');
-        if($request->hasFile('image')){
-             $new_name= rand().'.'.$image->getClientOriginalExtension();
-             $image->move(public_path('/images'),$new_name);
 
+        $file_extension =$request -> image -> getClientOriginalExtension();
+        $file_name =time().'.'.$file_extension;
+        $path ='C:\Users\user\fitbody\src\assets\Nutrition';
+        $request -> image -> move($path,$file_name);
+    
+      
         Nutrition::create([
-            'image'=> $new_name,
+            
             'title'=> request()->title,
             'text'=> request()->text,
             'subtext'=> request()->subtext,
-          
-
-
-        ]);
-    }
-        return 'saved successfuly';
-        print($request);
-    }
-   /* public function SaveNutrition(){
-        $nutrition = new Nutrition();
-        $nutrition->title = request()->title;
-        
-        $nutrition->text = request()->text;
-        $nutrition->subtext = request()->subtext;
-        $nutrition->image = request()->image;
-        $nutrition->save();
-        return response()->json([
-            'message' =>'Nutrtion created succesfully',
-            'code' => 200,
-            
-           
-        ]);
-
-
-    }*/
+            'image'=> $file_name,
     
-  /*public function SaveNutrition(Request $request){
-       
-        $nutrition = new Nutrition();
+    
+        ]);
+        return response()->json([
+          'message' => 'Nutrition uploaded successfully'
+      ],200);
       
-        if($request->hasFile('image')){
-            $image= $request->file('image');
-           $ext = $image->extension();
-           $file= time().'.'.$ext;
-           $image->storeAs('public/customer',$file);
-           $nutrition->image =$file;
-         
-        }
-        $nutrition->title = request()->title;    
-        $nutrition->text = request()->text;
-        $nutrition->subtext = request()->subtext;
-        $nutrition->image = request()->image;
-
-
+  }
     
-        $nutrition->save();
-        return response()->json([
-            'message' =>'Nutrtion created succesfully',
-            'code' => 200,
-            
-           
-        ]);
-    }  */
-    
-
-    
-  /*  public function SaveNutrition(Request $request){
-        $nutrition = new Nutrition();
-        if($request->hasFile('files')){
-            $pictures = [];
-            foreach ($request->file('files') as $file) {
-                # code...
-                $filename->storeAs('public/customer',$file);
-                $file->move(public_path('images') ,$filename);
-                $pictures[] = $file;
-                $nutrition->image =$pictures;
-        
-     
-        $nutrition->title = request()->title;
-        
-        $nutrition->text = request()->text;
-        $nutrition->subtext = request()->subtext;
-      
-        $nutrition->save();
-        return response()->json([
-            'message' =>'Nutrtion created succesfully',
-            'code' => 200,
-            
-           
-        ]);
-    }}else{
-                   return response()->json('image null');
-               }
-
-    }
-    */
+  
     
 
     

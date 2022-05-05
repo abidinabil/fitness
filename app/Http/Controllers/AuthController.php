@@ -32,6 +32,7 @@ class AuthController extends Controller
         }
 
         return $this->respondWithToken($token);
+        
     }
 
     public function register(){
@@ -39,6 +40,8 @@ class AuthController extends Controller
         'name' => request('name'),
         'email' => request('email'),
         'password' => Hash::make(request('password')),
+        'role' => request('role'),
+        
        
         ]);
          

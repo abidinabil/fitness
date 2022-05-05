@@ -15,11 +15,15 @@ class CreateExercicesTable extends Migration
     {
         Schema::create('exercices', function (Blueprint $table) {
             $table->id();
+           
             $table->string('title');
             $table->string('text');
             $table->string('subtext');
             $table->string('catégorie');
-            $table->string('video')->nullable();
+            $table->string('image')->nullable();
+            $table->string('image1')->nullable();
+     
+     
             $table->timestamps();
         });
     }

@@ -9,30 +9,29 @@ class NutritionnisteController extends Controller
 {
 
     /***********************  Save Nutritionniste *********************** */
-    public function SaveNutritionniste(){
-        $nutritionniste = new Nutritionniste();
-        $nutritionniste->nom = request()->nom;
-        $nutritionniste->text = request()->text;
-        $nutritionniste->subtext = request()->subtext;
-        $nutritionniste->adresse = request()->adresse;
-        $nutritionniste->photo = request()->photo;
-        if($nutritionniste){
-        $nutritionniste->save();
-        return response()->json([
-            'message' =>'Nutrtionniste created succesfully',
-            'code' => 200,
-            
-           
-        ]);
-    }else {
-        return response()->json([
-            'message' =>'erreur',
-            
-            
-           
-        ]);
-    }
+    public function SaveNutritionniste(Request $request){
+        
 
+        $file_extension =$request -> photo -> getClientOriginalExtension();
+        $file_name =time().'.'.$file_extension;
+        $path ='C:\Users\user\fitbody\src\assets\Nutritionniste';
+        $request -> photo -> move($path,$file_name);
+    
+      
+        Nutritionniste::create([
+    
+            'nom'=> request()->nom,
+            'text'=> request()->text,
+            'adresse'=> request()->adresse,
+            'subtext'=> request()->subtext,
+            'photo'=> $file_name,
+    
+    
+        ]);
+        return response()->json([
+          'message' => 'Nutritionniste uploaded successfully'
+      ],200);
+      
     }
      /***********************  Fin Save Nutritionniste *********************** */
 

@@ -16,7 +16,7 @@ class CreateNutritionTable extends Migration
         Schema::create('nutrition', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('text');
             $table->string('subtext');
             $table->timestamps();

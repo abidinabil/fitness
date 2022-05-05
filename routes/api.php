@@ -45,7 +45,32 @@ Route::group([
     Route::get('updateNutritionniste/{id}' , 'NutritionnisteController@updateNutritionniste');
     Route::put('editNutritionniste' , 'NutritionnisteController@editNutritionniste');
     Route::post('SaveExercice', 'ExerciceController@SaveExercice');
- 
+    Route::get('getExercice', 'ExerciceController@getExercice');
+    Route::post('SaveCoach', 'CoachController@SaveCoach');
+    Route::get('getCoach', 'CoachController@getCoach');
+    Route::delete('deleteCoach/{id}' , 'CoachController@deleteCoach');
+    Route::get('updateCoach/{id}' , 'CoachController@updateCoach');
+    Route::put('editCoach' , 'CoachController@editCoach');
+    Route::post('SaveSalle', 'SalleController@SaveSalle');
+    Route::get('getSalle', 'SalleController@getSalle');
+    Route::delete('deleteSalle/{id}' , 'SalleController@deleteSalle');
+    Route::get('updateSalle/{id}' , 'SalleController@updateSalle');
+    Route::put('editSalle' , 'SalleController@editSalle');
+    Route::post('store', 'ImagesController@store');
+    Route::get('getImages', 'ImagesController@getImages');
+    Route::post('SaveWorkout', 'WorkoutController@SaveWorkout');
+    Route::delete('deleteWorkout/{id}' , 'WorkoutController@deleteWorkout');
+    Route::get('getWorkout/{id}', 'WorkoutController@getWorkout');
+    Route::post('saveExerciceWorkout', 'ExerciceWorkoutController@saveExerciceWorkout');
+    Route::get('getWorkoutDetails/{id}', 'WorkoutController@getWorkoutDetails');
+    Route::get('getExerciceWorkout/{id}', 'ExerciceWorkoutController@getExerciceWorkout');
+    Route::delete('deleteExerciceWorkout/{id}' , 'ExerciceWorkoutController@deleteExerciceWorkout');
+    Route::get('getExerciceByCategorie/{categorie}', 'ExerciceController@getExerciceByCategorie');
+    Route::post('saveProduit', 'ProduitController@saveProduit');
+    Route::get('getProduitByCategorie/{categorie}', 'ProduitController@getProduitByCategorie');
+    Route::get('getProduit', 'ProduitController@getProduit');
+    Route::get('getProduitBySousCategorie/{sous_categorie}', 'ProduitController@getProduitBySousCategorie');
+  
 
 });
 
