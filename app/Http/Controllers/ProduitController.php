@@ -47,7 +47,7 @@ class ProduitController extends Controller
               $produit
                 );
                }
-               public function getProduitBySousCategorie($sous_categorie ){
+               public function getProduitMens($sous_categorie ){
                 $produit = Produit::where('sous_categorie','=',$sous_categorie)
                  ->where('categorie','=','Mens')
                  
@@ -57,6 +57,44 @@ class ProduitController extends Controller
                   $produit
                     );
                    }
+                   public function getProduitWomens($sous_categorie ){
+                    $produit = Produit::where('sous_categorie','=',$sous_categorie)
+                     ->where('categorie','=','Womens')
+                     
+                    ->get();
+                    return response()->json(
+                        
+                      $produit
+                        );
+                       }
+                       public function getProduitAccessoires($sous_categorie ){
+                        $produit = Produit::where('sous_categorie','=',$sous_categorie)
+                         ->where('categorie','=','Accessoires')
+                         
+                        ->get();
+                        return response()->json(
+                            
+                          $produit
+                            );
+                           }
+                           public function getProduitProteine($sous_categorie ){
+                            $produit = Produit::where('sous_categorie','=',$sous_categorie)
+                             ->where('categorie','=','Proteine')
+                             
+                            ->get();
+                            return response()->json(
+                                
+                              $produit
+                                );
+                               }
+
+                               public function getProductDetails($id){
+                                $produit = Produit::find($id);
+                                return response()->json(
+                                    
+                                  $produit
+                                    );
+                                   }
 
 
       

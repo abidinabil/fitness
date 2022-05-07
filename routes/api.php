@@ -69,7 +69,11 @@ Route::group([
     Route::post('saveProduit', 'ProduitController@saveProduit');
     Route::get('getProduitByCategorie/{categorie}', 'ProduitController@getProduitByCategorie');
     Route::get('getProduit', 'ProduitController@getProduit');
-    Route::get('getProduitBySousCategorie/{sous_categorie}', 'ProduitController@getProduitBySousCategorie');
+    Route::get('getProduitMens/{sous_categorie}', 'ProduitController@getProduitMens');
+    Route::get('getProduitWomens/{sous_categorie}', 'ProduitController@getProduitWomens');
+    Route::get('getProduitAccessoires/{sous_categorie}', 'ProduitController@getProduitAccessoires');
+    Route::get('getProduitProteine/{sous_categorie}', 'ProduitController@getProduitProteine');
+    Route::get('getProductDetails/{id}', 'ProduitController@getProductDetails');
   
 
 });
