@@ -51,4 +51,12 @@ class ExerciceController extends Controller
           $exercice
             );
            }
+
+           public function getExerciceDetails($id){
+            $exercice = Exercice::find($id);
+            return response()->json(
+                
+              $exercice
+                );
+               }
 }

@@ -46,6 +46,7 @@ Route::group([
     Route::put('editNutritionniste' , 'NutritionnisteController@editNutritionniste');
     Route::post('SaveExercice', 'ExerciceController@SaveExercice');
     Route::get('getExercice', 'ExerciceController@getExercice');
+    Route::get('getExerciceDetails/{id}', 'ExerciceController@getExerciceDetails');
     Route::post('SaveCoach', 'CoachController@SaveCoach');
     Route::get('getCoach', 'CoachController@getCoach');
     Route::delete('deleteCoach/{id}' , 'CoachController@deleteCoach');
@@ -74,6 +75,9 @@ Route::group([
     Route::get('getProduitAccessoires/{sous_categorie}', 'ProduitController@getProduitAccessoires');
     Route::get('getProduitProteine/{sous_categorie}', 'ProduitController@getProduitProteine');
     Route::get('getProductDetails/{id}', 'ProduitController@getProductDetails');
+    Route::post('addToCart/{user_id}/{produit_id}', 'BasketController@addToCart');
+    Route::get('getProduitUser/{id}', 'BasketController@getProduitUser');
+  
   
 
 });
