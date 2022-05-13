@@ -14,7 +14,7 @@ class NutritionController extends Controller
 
         $file_extension =$request -> image -> getClientOriginalExtension();
         $file_name =time().'.'.$file_extension;
-        $path ='C:\Users\user\fitbody\src\assets\Nutrition';
+        $path ='C:\pfe-main\public\image\Nutrition';
         $request -> image -> move($path,$file_name);
     
       
@@ -96,6 +96,14 @@ class NutritionController extends Controller
              $path ='images';
              $request -> photo -> move($path,$file_name);
            } */
+
+           public function getNutritionDetails($id){
+            $nutrition = Nutrition::find($id);
+            return response()->json(
+                
+              $nutrition
+                );
+               }
         
 }
 

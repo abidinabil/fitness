@@ -77,6 +77,9 @@ Route::group([
     Route::get('getProductDetails/{id}', 'ProduitController@getProductDetails');
     Route::post('addToCart/{user_id}/{produit_id}', 'BasketController@addToCart');
     Route::get('getProduitUser/{id}', 'BasketController@getProduitUser');
+    Route::post('SaveAliment', 'AlimentController@SaveAliment');
+    Route::get('getAliment', 'AlimentController@getAliment');
+    Route::get('getNutritionDetails/{id}', 'NutritionController@getNutritionDetails');
   
   
 
