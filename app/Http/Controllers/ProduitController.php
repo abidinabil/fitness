@@ -47,6 +47,22 @@ class ProduitController extends Controller
               $produit
                 );
                }
+               public function deleteProduit($id){
+                $produit = Produit:: find($id);
+                if($produit){
+                    $produit -> delete ();
+                    return response()->json([
+                     'message' =>'produit deleted succesfully',
+                     'code' => 200,
+                     
+                    
+                 ]);
+              
+                }else {
+                     return response()->json([
+                     'message' =>"produit with id:$id does not exist",   ]);
+                }
+              }
                public function getProduitMens($sous_categorie ){
                 $produit = Produit::where('sous_categorie','=',$sous_categorie)
                  ->where('categorie','=','Mens')

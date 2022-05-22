@@ -9,6 +9,6 @@ class Aliment extends Model
     protected $table = "aliments";
 
     protected $fillable = [
-        'name', 'calorie', 'carbs','fat','proteine','qty'
+        'name', 'calorie', 'carbs','fat','proteine','qty','grammage'
     ];
 }

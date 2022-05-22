@@ -30,6 +30,7 @@ Route::group([
 
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
+
     Route::post('me', 'AuthController@me');
     Route::get('coach', 'CoachController@coach');
     Route::post('Nutrition', 'NutritionController@SaveNutrition');
@@ -46,6 +47,7 @@ Route::group([
     Route::put('editNutritionniste' , 'NutritionnisteController@editNutritionniste');
     Route::post('SaveExercice', 'ExerciceController@SaveExercice');
     Route::get('getExercice', 'ExerciceController@getExercice');
+    Route::delete('deleteExercice/{id}' , 'ExerciceController@deleteExercice');
     Route::get('getExerciceDetails/{id}', 'ExerciceController@getExerciceDetails');
     Route::post('SaveCoach', 'CoachController@SaveCoach');
     Route::get('getCoach', 'CoachController@getCoach');
@@ -70,6 +72,7 @@ Route::group([
     Route::post('saveProduit', 'ProduitController@saveProduit');
     Route::get('getProduitByCategorie/{categorie}', 'ProduitController@getProduitByCategorie');
     Route::get('getProduit', 'ProduitController@getProduit');
+    Route::delete('deleteProduit/{id}' , 'ProduitController@deleteProduit');
     Route::get('getProduitMens/{sous_categorie}', 'ProduitController@getProduitMens');
     Route::get('getProduitWomens/{sous_categorie}', 'ProduitController@getProduitWomens');
     Route::get('getProduitAccessoires/{sous_categorie}', 'ProduitController@getProduitAccessoires');
@@ -79,7 +82,23 @@ Route::group([
     Route::get('getProduitUser/{id}', 'BasketController@getProduitUser');
     Route::post('SaveAliment', 'AlimentController@SaveAliment');
     Route::get('getAliment', 'AlimentController@getAliment');
+    Route::delete('deleteAliment/{id}' , 'AlimentController@deleteAliment');
     Route::get('getNutritionDetails/{id}', 'NutritionController@getNutritionDetails');
+    Route::get('searchAliment/{search}', 'AlimentController@searchAliment');
+    Route::get('getAlimentById/{id}', 'AlimentController@getAlimentById');
+    Route::get('updateAliment/{id}' , 'AlimentController@updateAliment');
+    Route::put('editAliment' , 'AlimentController@editAliment');
+    Route::post('SaveRegime', 'RegimeController@SaveRegime');
+    Route::get('getRegimeByPdejuner/{id}', 'RegimeController@getRegimeByPdejuner');
+    Route::get('getRegimeByDejuner/{id}', 'RegimeController@getRegimeByDejuner');
+    Route::get('getRegimeByDinner/{id}', 'RegimeController@getRegimeByDinner');
+    Route::get('getRegimeBySnack/{id}', 'RegimeController@getRegimeBySnack');
+    Route::get('getRegime/{id}', 'RegimeController@getRegime');
+    Route::post('updateProfil/{id}' , 'UserController@updateProfil');
+    Route::get('getUser/{id}' , 'UserController@getUser');
+    Route::post('updateImage/{id}' , 'UserController@updateimage');
+    Route::post('SavePost', 'PostController@SavePost');
+    Route::get('getPost', 'PostController@getPost');
   
   
 

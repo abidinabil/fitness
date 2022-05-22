@@ -14,7 +14,7 @@ class NutritionnisteController extends Controller
 
         $file_extension =$request -> photo -> getClientOriginalExtension();
         $file_name =time().'.'.$file_extension;
-        $path ='C:\Users\user\fitbody\src\assets\Nutritionniste';
+        $path ='C:\pfe-main\public\image\Nutritionniste';
         $request -> photo -> move($path,$file_name);
     
       

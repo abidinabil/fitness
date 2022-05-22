@@ -44,6 +44,22 @@ class ExerciceController extends Controller
       $exercice
         );
        }
+       public function deleteExercice($id){
+        $exercice = Exercice:: find($id);
+        if($exercice){
+            $exercice -> delete ();
+            return response()->json([
+             'message' =>'Exercice deleted succesfully',
+             'code' => 200,
+             
+            
+         ]);
+      
+        }else {
+             return response()->json([
+             'message' =>"Coach with id:$id does not exist",   ]);
+        }
+      }
        public function getExerciceByCategorie($categorie){
         $exercice = Exercice::where('catégorie','=',$categorie)->get();
         return response()->json(

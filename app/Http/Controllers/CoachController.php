@@ -71,16 +71,12 @@ public function deleteCoach($id){
  /***********************************Fin Update Coach ******************* */
   /***********************************Edit coach *********************** */
             public function editCoach(){
-              
-    $file_extension =$request -> photo -> getClientOriginalExtension();
-    $file_name =time().'.'.$file_extension;
-    $path ='C:\pfe-main\public\image';
-    $request -> photo -> move($path,$file_name);
+    
               $coach = Coach::find(request()->id);
               $coach->name = request()->name;
               $coach->text = request()->text;
               $coach->subtext = request()->subtext;
-              $coach->photo = request()->$file_name;
+        
               $coach->age = request()->age;
               $coach->specialite = request()->specialite;
               $coach->update();
