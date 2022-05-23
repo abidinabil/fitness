@@ -101,7 +101,17 @@ class NutritionnisteController extends Controller
              'message' =>"Nutrtionniste with id:$id does not exist",   ]);
         }
     }
+      /***********************  Fin Edit Nutritionniste *********************** */
+
+    /**************************Search Nutritionniste ******************************* */
+    public function searchNutritionniste($search){
+        $nutritionniste = Nutritionniste::where('adresse','like','%'.$search.'%')->get();
+        return response()->json($nutritionniste);
+    }
+   
 
     }
-     /***********************  Fin Edit Nutritionniste *********************** */
+   
+
+     
 

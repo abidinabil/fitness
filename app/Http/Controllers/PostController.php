@@ -28,11 +28,25 @@ class PostController extends Controller
       
   }
   public function getPost(){
-    $post = DB::table('posts')
-   
-    ->join('users','users.id','posts.id_user')
-    
+    $post = DB::table('users')
+    ->join('posts','posts.id_user','users.id')
     ->get();
     return response()->json($post);   
 }
+            public function deletePost($id){
+                $post = Post :: find($id);
+                if($post){
+                    $post -> delete ();
+                    return response()->json([
+                    'message' =>'Post deleted succesfully',
+                    'code' => 200,
+                    
+                    
+                ]);
+
+                }else {
+                    return response()->json([
+                    'message' =>"Post with id:$id does not exist",   ]);
+                }
+            }
 }

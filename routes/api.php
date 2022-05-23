@@ -45,6 +45,7 @@ Route::group([
     Route::delete('deleteNutritionniste/{id}' , 'NutritionnisteController@deleteNutritionniste');
     Route::get('updateNutritionniste/{id}' , 'NutritionnisteController@updateNutritionniste');
     Route::put('editNutritionniste' , 'NutritionnisteController@editNutritionniste');
+    Route::get('searchNutritionniste/{search}', 'NutritionnisteController@searchNutritionniste');
     Route::post('SaveExercice', 'ExerciceController@SaveExercice');
     Route::get('getExercice', 'ExerciceController@getExercice');
     Route::delete('deleteExercice/{id}' , 'ExerciceController@deleteExercice');
@@ -99,7 +100,10 @@ Route::group([
     Route::post('updateImage/{id}' , 'UserController@updateimage');
     Route::post('SavePost', 'PostController@SavePost');
     Route::get('getPost', 'PostController@getPost');
-  
+    Route::delete('deletePost/{id}' , 'PostController@deletePost');
+    Route::post('SaveCommentaire', 'CommentaireController@SaveCommentaire');
+    Route::get('getCommentaire/{id}', 'CommentaireController@getCommentaire');
+ 
   
 
 });
