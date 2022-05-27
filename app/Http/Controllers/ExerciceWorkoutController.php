@@ -51,4 +51,26 @@ class ExerciceWorkoutController extends Controller
                  'message' =>"Exercice with id:$id does not exist",   ]);
             }
         }
+         /***********************************Update ExerciceWorkout ******************* */
+         public function updateExerciceWorkout($id){
+          $workout = ExerciceWorkout::find($id);
+          return response()->json($workout);
+        }
+/***********************************Fin Update ExerciceWorkout ******************* */
+         /***********************************Edit ExerciceWorkout *********************** */
+         public function editExerciceWorkout(){
+    
+          $workout = ExerciceWorkout::find(request()->id);
+          $workout->exercice = request()->exercice;
+          $workout->sets = request()->sets;
+          $workout->reps = request()->reps;
+    
+          $workout->weight = request()->weight;
+      
+          $workout->update();
+          return 'ok';
+
+        }
+
+         /*********************************** fin ExerciceWorkout *********************** */
 }

@@ -9,7 +9,7 @@ class coach extends Model
     protected $table = "coaches";
 
     protected $fillable = [
-        'name', 'text', 'subtext','age','specialite','photo'
+        'name', 'text', 'subtext','age','specialite','adresse','photo'
     ];
 
    

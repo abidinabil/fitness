@@ -6,66 +6,103 @@ use Illuminate\Http\Request;
 use App\Salle;
 class SalleController extends Controller
 {
-    public function SaveSalle(Request $request){
-    /*   $file_extension =$request -> photo -> getClientOriginalExtension();
-         $file_name =time().'.'.$file_extension;
-         $path ='images';
-         $request -> photo -> move($path,$file_name);*/
-
-    $salle = new Salle();
+    public function SaveGym(Request $request){
         
-        $salle->name = request()->name;
-        $salle->text = request()->text;
-        $salle->subtext = request()->subtext;
-        $salle->adresse = request()->adresse;
-        $salle->photo = request()->photo;
-        $salle->save();
-        return response()->json([
-            'message' =>'Salle de sport created succesfully',
-            'code' => 200,
-            
-        ]);
-}
 
-public function getSalle(){
-    $salle = Salle::all();
-    return response()->json(
-        
-      $salle
-        );
-       }
+        $file_extension =$request -> photo -> getClientOriginalExtension();
+        $file_name =time().'.'.$file_extension;
+        $path ='C:\pfe-main\public\image\Gym';
+        $request -> photo -> move($path,$file_name);
+    
       
-       public function deleteSalle($id){
-           $salle = Salle:: find($id);
-           if($salle){
-               $salle -> delete ();
-               return response()->json([
-                'message' =>'Salle de sport deleted succesfully',
-                'code' => 200,
-                
-               
-            ]);
+        Salle::create([
+    
+            'name'=> request()->name,
+            'text'=> request()->text,
+            'adresse'=> request()->adresse,
+            'subtext'=> request()->subtext,
+            'photo'=> $file_name,
+    
+    
+        ]);
+        return response()->json([
+          'message' => 'Gym uploaded successfully'
+      ],200);
+      
+    }
+     /***********************  Fin Save gym *********************** */
 
-           }else {
-                return response()->json([
-                'message' =>"Salle de sport with id:$id does not exist",   ]);
+       /***********************  GET gym *********************** */
+
+    public function getGym(){
+        $gym = Salle::all();
+        return response()->json(
+            
+          $gym
+            );
            }
-       }
+    /***********************  Fin GET gym *********************** */
 
-       public function updateSalle($id){
-           $salle = Salle::find($id);
-           return response()->json($salle);
-       }
 
-       public function editSalle(){
-           $salle = Salle::find(request()->id);
-           $salle->name = request()->name;
-           $salle->text = request()->text;
-           $salle->subtext = request()->subtext;
-           $salle->photo = request()->photo;
-           $salle->adresse = request()->adresse;
-           $salle->update();
-           return 'ok';
+    /***************************Delete gym ****************** */
+       
 
-       }
+    public function deleteGym($id){
+        $gym = Salle :: find($id);
+        if($gym){
+            $gym -> delete ();
+            return response()->json([
+             'message' =>'Gym deleted succesfully',
+             'code' => 200,
+             
+            
+         ]);
+
+        }else {
+             return response()->json([
+             'message' =>"Gym with id:$id does not exist",   ]);
+        }
+    }
+
+     /***********************  Fin Delete Nutritionniste *********************** */
+
+     /****************************Update Nutritionniste*************** */
+     public function updateGym($id){
+        $gym = Salle::find($id);
+        return response()->json($gym);
+    }
+    
+    /***********************  Fin Delete Nutritionniste *********************** */
+
+    /************************Edit NUtritionniste *************** */
+    
+    public function editGym(){
+        $gym = Salle::find(request()->id);
+        $gym->name = request()->name;
+        $gym->text = request()->text;
+        $gym->subtext = request()->subtext;
+        $gym->adresse = request()->adresse;
+        
+        $gym->photo = request()->photo;
+        if($gym){
+            $gym -> update ();
+            return response()->json([
+             'message' =>'Gym update succesfully',
+             'code' => 200,
+             
+            
+         ]);
+
+        }else {
+             return response()->json([
+             'message' =>"Gym with id:$id does not exist",   ]);
+        }
+    }
+      /***********************  Fin Edit Nutritionniste *********************** */
+
+    /**************************Search Nutritionniste ******************************* */
+    public function searchGym($search){
+        $gym = Salle::where('adresse','like','%'.$search.'%')->get();
+        return response()->json($gym);
+    }
 }

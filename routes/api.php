@@ -46,15 +46,26 @@ Route::group([
     Route::get('updateNutritionniste/{id}' , 'NutritionnisteController@updateNutritionniste');
     Route::put('editNutritionniste' , 'NutritionnisteController@editNutritionniste');
     Route::get('searchNutritionniste/{search}', 'NutritionnisteController@searchNutritionniste');
+    /*****************************************Gestion Gym ************************* */
+    Route::post('SaveGym', 'SalleController@SaveGym');
+    Route::get('getGym', 'SalleController@getGym');
+    Route::delete('deleteGym/{id}' , 'SalleController@deleteGym');
+    Route::get('updateGym/{id}' , 'SalleController@updateGym');
+    Route::put('editGym' , 'SalleController@editGym');
+    Route::get('searchGym/{search}', 'SalleController@searchGym');
+    /*****************************************Fin Gestion gym ******************* */
     Route::post('SaveExercice', 'ExerciceController@SaveExercice');
     Route::get('getExercice', 'ExerciceController@getExercice');
     Route::delete('deleteExercice/{id}' , 'ExerciceController@deleteExercice');
+    Route::get('updateExercice/{id}' , 'ExerciceController@updateExercice');
+    Route::put('editExercice' , 'ExerciceController@editExercice');
     Route::get('getExerciceDetails/{id}', 'ExerciceController@getExerciceDetails');
     Route::post('SaveCoach', 'CoachController@SaveCoach');
     Route::get('getCoach', 'CoachController@getCoach');
     Route::delete('deleteCoach/{id}' , 'CoachController@deleteCoach');
     Route::get('updateCoach/{id}' , 'CoachController@updateCoach');
     Route::put('editCoach' , 'CoachController@editCoach');
+    Route::get('searchCoach/{search}', 'CoachController@searchCoach');
     Route::post('SaveSalle', 'SalleController@SaveSalle');
     Route::get('getSalle', 'SalleController@getSalle');
     Route::delete('deleteSalle/{id}' , 'SalleController@deleteSalle');
@@ -65,12 +76,16 @@ Route::group([
     Route::post('SaveWorkout', 'WorkoutController@SaveWorkout');
     Route::delete('deleteWorkout/{id}' , 'WorkoutController@deleteWorkout');
     Route::get('getWorkout/{id}', 'WorkoutController@getWorkout');
+    Route::put('editWorkoutName' , 'WorkoutController@editWorkoutName');
     Route::post('saveExerciceWorkout', 'ExerciceWorkoutController@saveExerciceWorkout');
     Route::get('getWorkoutDetails/{id}', 'WorkoutController@getWorkoutDetails');
     Route::get('getExerciceWorkout/{id}', 'ExerciceWorkoutController@getExerciceWorkout');
+    Route::get('updateExerciceWorkout/{id}' , 'ExerciceWorkoutController@updateExerciceWorkout');
+    Route::put('editExerciceWorkout' , 'ExerciceWorkoutController@editExerciceWorkout');
     Route::delete('deleteExerciceWorkout/{id}' , 'ExerciceWorkoutController@deleteExerciceWorkout');
     Route::get('getExerciceByCategorie/{categorie}', 'ExerciceController@getExerciceByCategorie');
     Route::post('saveProduit', 'ProduitController@saveProduit');
+    Route::get('updateProduit/{id}' , 'ProduitController@updateProduit');
     Route::get('getProduitByCategorie/{categorie}', 'ProduitController@getProduitByCategorie');
     Route::get('getProduit', 'ProduitController@getProduit');
     Route::delete('deleteProduit/{id}' , 'ProduitController@deleteProduit');
@@ -90,19 +105,37 @@ Route::group([
     Route::get('updateAliment/{id}' , 'AlimentController@updateAliment');
     Route::put('editAliment' , 'AlimentController@editAliment');
     Route::post('SaveRegime', 'RegimeController@SaveRegime');
+    Route::delete('deleteRegime/{id}', 'RegimeController@deleteRegime');
+    Route::get('updateRegime/{id}' , 'RegimeController@updateRegime');
+    Route::put('editRegime' , 'RegimeController@editRegime');
     Route::get('getRegimeByPdejuner/{id}', 'RegimeController@getRegimeByPdejuner');
     Route::get('getRegimeByDejuner/{id}', 'RegimeController@getRegimeByDejuner');
     Route::get('getRegimeByDinner/{id}', 'RegimeController@getRegimeByDinner');
     Route::get('getRegimeBySnack/{id}', 'RegimeController@getRegimeBySnack');
     Route::get('getRegime/{id}', 'RegimeController@getRegime');
     Route::post('updateProfil/{id}' , 'UserController@updateProfil');
+    Route::post('updatePasswordUser/{id}' , 'UserController@updatePasswordUser');
+    Route::post('SaveAdmin' , 'UserController@SaveAdmin');
     Route::get('getUser/{id}' , 'UserController@getUser');
+    Route::get('getAllUser', 'UserController@getAllUser');
+    Route::delete('deleteUser/{id}', 'UserController@deleteUser');
+    Route::get('updateAdmin/{id}' , 'UserController@updateAdmin');
+    Route::put('editAdmin' , 'UserController@editAdmin');
     Route::post('updateImage/{id}' , 'UserController@updateimage');
     Route::post('SavePost', 'PostController@SavePost');
     Route::get('getPost', 'PostController@getPost');
+    Route::get('updatePost/{id}' , 'PostController@updatePost');
+    Route::put('editPost' , 'PostController@editPost');
     Route::delete('deletePost/{id}' , 'PostController@deletePost');
+    Route::post('updateImagePost/{id}' , 'PostController@updateImagePost');
     Route::post('SaveCommentaire', 'CommentaireController@SaveCommentaire');
     Route::get('getCommentaire/{id}', 'CommentaireController@getCommentaire');
+    Route::delete('deleteCommentaire/{id}' , 'CommentaireController@deleteCommentaire');
+    Route::post('updateCommentaire/{id}' , 'CommentaireController@updateCommentaire');
+  
+    Route::post('SaveEnregistrement/{id_user}/{id_posts}', 'EnregistrementController@SaveEnregistrement');
+    Route::get('getEnregistrementUser/{id}', 'EnregistrementController@getEnregistrementUser');
+
  
   
 

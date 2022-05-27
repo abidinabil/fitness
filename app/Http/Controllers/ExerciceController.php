@@ -75,4 +75,26 @@ class ExerciceController extends Controller
               $exercice
                 );
                }
+                /***********************************Update Coach ******************* */
+            public function updateExercice($id){
+              $exercice = Exercice::find($id);
+              return response()->json($exercice);
+            }
+ /***********************************Fin Update Coach ******************* */
+          /***********************************Edit coach *********************** */
+          public function editExercice(){
+            
+            $exercice = Exercice::find(request()->id);
+            $exercice->title = request()->title;
+            $exercice->text = request()->text;
+            $exercice->subtext = request()->subtext;
+
+            $exercice->catégorie = request()->catégorie;
+           
+            $exercice->update();
+            return 'ok';
+
+          }
+
+          /*********************************** fin Edit coach *********************** */
 }

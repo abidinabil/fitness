@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function updateProfil(Request $request,$id){
@@ -12,6 +12,15 @@ class UserController extends Controller
             'email' =>$request->email,
             'weight' =>$request->weight,
             'taille' =>$request->taille,
+
+        ]);
+       
+        return response()->json($user);
+    }
+    public function updatePasswordUser(Request $request,$id){
+        $user = User::where('id','=',$id)->update([
+            'password' => Hash::make(request('password')),
+          
 
         ]);
        
@@ -43,5 +52,61 @@ class UserController extends Controller
             ]);
         }
         
+    }
+    /*********************************Get Coach********************* */
+public function getAllUser(){
+    $user = User::all();
+    return response()->json(  
+      $user
+        );
+       }
+       public function deleteUser($id){
+        $user = User:: find($id);
+        if($user){
+            $user -> delete ();
+            return response()->json([
+             'message' =>'user deleted succesfully',
+             'code' => 200,
+             
+            
+         ]);
+      
+        }else {
+             return response()->json([
+             'message' =>"user with id:$id does not exist",   ]);
+        }
+      }
+       /***********************************Update admin ******************* */
+       public function updateAdmin($id){
+        $user = User::find($id);
+        return response()->json($user);
+      }
+/***********************************Fin Update Coach ******************* */
+/***********************************Edit coach *********************** */
+      public function editAdmin(){
+
+        $user = User::find(request()->id);
+        $user->name = request()->name;
+        $user->email = request()->email;
+      
+        $user->update();
+        return 'ok';
+
+      }
+
+       /*********************************** fin Edit coach *********************** */
+       public function SaveAdmin(Request $request){     
+        User::create([
+    
+            'name'=> request()->name,
+            'email'=> request()->email,
+            'password' => Hash::make(request('password')),
+             'role'=> request()->role,
+
+        ]);
+        return response()->json([
+          'message' => 'admin uploaded successfully'
+      ],200);
+      
     }
 }

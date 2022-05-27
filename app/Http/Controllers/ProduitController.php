@@ -111,6 +111,10 @@ class ProduitController extends Controller
                                   $produit
                                     );
                                    }
+                                   public function updateProduit($id){
+                                    $produit = Produit::find($id);
+                                    return response()->json($produit);
+                                  }
 
 
       

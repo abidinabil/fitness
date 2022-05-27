@@ -20,6 +20,7 @@ class CreateCoachesTable extends Migration
             $table->string('text');
             $table->string('specialite');
             $table->string('subtext');
+            $table->string('adresse');
             $table->string('photo')->nullable();
 
             $table->timestamps();

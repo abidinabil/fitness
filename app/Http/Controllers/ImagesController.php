@@ -23,7 +23,7 @@ class ImagesController extends Controller
         }
     }  */
       
-/*public function SaveImages(Request $request){
+public function store(Request $request){
         
 
       $file_extension =$request -> images -> getClientOriginalExtension();
@@ -34,7 +34,7 @@ class ImagesController extends Controller
     
       Images::create([
           
-          'name'=> request()->name,
+        
           'images'=> $file_name,
   
   
@@ -43,9 +43,9 @@ class ImagesController extends Controller
         'message' => 'File uploaded successfully'
     ],200);
     
-} */
+} 
 
-public function store(Request $request)
+/*public function store(Request $request)
 {
     if($request->hasFile('files')){
         $pictures=[];
@@ -62,7 +62,7 @@ public function store(Request $request)
         ]);
         return response()->json(['message' => 'image added']);
     }
-}
+} */
 public function getImages()
 {
     $images = Images::orderBy('created_at' ,'DESC')->get();

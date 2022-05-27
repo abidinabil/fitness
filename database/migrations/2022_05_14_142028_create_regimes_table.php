@@ -22,6 +22,7 @@ class CreateRegimesTable extends Migration
             $table->integer('proteine');
             $table->integer('grammage');
             $table->string('categorieType');
+            $table->integer('qty');
            
             $table->id();
             $table->timestamps();

@@ -49,4 +49,46 @@ class PostController extends Controller
                     'message' =>"Post with id:$id does not exist",   ]);
                 }
             }
+             /***********************************Update Coach ******************* */
+             public function updatePost($id){
+                $post = Post::find($id);
+                return response()->json($post);
+              }
+   /***********************************Fin Update Coach ******************* */
+    /***********************************Edit post *********************** */
+    public function editPost(){
+    
+        $post = Post::find(request()->id);
+        $post->post = request()->post;
+       
+        $post->update();
+        return 'ok';
+
+      }
+      
+
+      
+
+       /*********************************** fin Edit coach *********************** */
+
+       /****************************************Update Image Profile **************** */
+       public function updateImagePost(Request $request,$id){
+        try{
+            $post = Post::find($id);
+            if($request->hasFile("image")){
+                $file = $request->file("image");
+                $extension=$file->getClientOriginalExtension();
+                $filename=time().'.'.$extension;
+                $file->move('C:\pfe-main\public\image\Post',$filename);
+                $post->image=$filename;
+                $res=$post->save();
+                return response()->json($post);
+            }
+        }catch(Exeption $e){
+            return response()->json([
+                "message" => $e->getMessage()
+            ]);
+        }
+        
+    }
 }

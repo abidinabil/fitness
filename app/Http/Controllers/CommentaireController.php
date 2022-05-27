@@ -12,12 +12,7 @@ class CommentaireController extends Controller
         $commentaire->id_user = request()->id_user;
         $commentaire->id_post = request()->id_post;
         $commentaire->commentaire = request()->commentaire;
-   
-
-       
-        
-
-
+  
         $commentaire->save();
         return response()->json([
             'message' =>'Commentaire created succesfully',
@@ -36,4 +31,30 @@ class CommentaireController extends Controller
         ->get();
         return response()->json($commentaire);   
     }
+    public function deleteCommentaire($id){
+        $commentaire = Commentaire :: find($id);
+        if($commentaire){
+            $commentaire -> delete ();
+            return response()->json([
+            'message' =>'commentaire deleted succesfully',
+            'code' => 200,
+            
+            
+        ]);
+
+        }else {
+            return response()->json([
+            'message' =>"commentaire with id:$id does not exist",   ]);
+        }
+    }
+    /**************************Update Commentaire ****************** */
+  //modifier name user
+  public function updateCommentaire(Request $request,$id){
+    $commentaire = Commentaire::where('id','=',$id)->update([
+        'commentaire'=>$request->commentairet
+        ]);
+    return response()->json($commentaire);
+}
+
+
 }

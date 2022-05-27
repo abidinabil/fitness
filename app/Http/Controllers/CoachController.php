@@ -24,6 +24,7 @@ public function SaveCoach(Request $request){
         'text'=> request()->text,
         'specialite'=> request()->specialite,
         'subtext'=> request()->subtext,
+        'adresse'=> request()->adresse,
         'photo'=> $file_name,
 
 
@@ -79,10 +80,18 @@ public function deleteCoach($id){
         
               $coach->age = request()->age;
               $coach->specialite = request()->specialite;
+              $coach->adresse = request()->adresse;
               $coach->update();
               return 'ok';
 
             }
 
              /*********************************** fin Edit coach *********************** */
+
+             /***************************************recherche coach ************************ */
+               /**************************Search Nutritionniste ******************************* */
+    public function searchCoach($search){
+      $coach = Coach::where('adresse','like','%'.$search.'%')->get();
+      return response()->json($coach);
+  }
             }
