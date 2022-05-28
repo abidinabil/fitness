@@ -58,6 +58,7 @@ Route::group([
     /*****************************************Fin Gestion gym ******************* */
     Route::post('SaveExercice', 'ExerciceController@SaveExercice');
     Route::get('getExercice', 'ExerciceController@getExercice');
+    Route::get('searchExercice/{search}', 'ExerciceController@searchExercice');
     Route::delete('deleteExercice/{id}' , 'ExerciceController@deleteExercice');
     Route::get('updateExercice/{id}' , 'ExerciceController@updateExercice');
     Route::put('editExercice' , 'ExerciceController@editExercice');
@@ -90,6 +91,7 @@ Route::group([
     Route::delete('deleteExerciceWorkout/{id}' , 'ExerciceWorkoutController@deleteExerciceWorkout');
     Route::get('getExerciceByCategorie/{categorie}', 'ExerciceController@getExerciceByCategorie');
     Route::post('saveProduit', 'ProduitController@saveProduit');
+        Route::get('searchProduit/{search}', 'ProduitController@searchProduit');
     Route::get('updateProduit/{id}' , 'ProduitController@updateProduit');
     Route::post('ModifierImageProduit/{id}' , 'ProduitController@ModifierImage');
     Route::get('getProduitByCategorie/{categorie}', 'ProduitController@getProduitByCategorie');
@@ -124,6 +126,7 @@ Route::group([
     Route::post('updatePasswordUser/{id}' , 'UserController@updatePasswordUser');
     Route::post('SaveAdmin' , 'UserController@SaveAdmin');
     Route::get('getUser/{id}' , 'UserController@getUser');
+    Route::get('searchUser/{search}', 'UserController@searchUser');
     Route::get('getAllUser', 'UserController@getAllUser');
     Route::delete('deleteUser/{id}', 'UserController@deleteUser');
     Route::get('updateAdmin/{id}' , 'UserController@updateAdmin');

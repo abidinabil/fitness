@@ -109,4 +109,8 @@ public function getAllUser(){
       ],200);
       
     }
+    public function searchUser($search){
+        $user = User::where('role','like','%'.$search.'%')->get();
+        return response()->json($user);
+    }
 }

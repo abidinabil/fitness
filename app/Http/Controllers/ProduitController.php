@@ -134,6 +134,10 @@ class ProduitController extends Controller
                                     $produit = Produit::find($id);
                                     return response()->json($produit);
                                   }
+                                  public function searchProduit($search){
+                                    $produit = Produit::where('categorie','like','%'.$search.'%')->get();
+                                    return response()->json($produit);
+                                }
 
                               
 

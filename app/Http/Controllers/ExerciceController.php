@@ -135,4 +135,8 @@ class ExerciceController extends Controller
           }
           
       }
+      public function searchExercice($search){
+        $exercice = Exercice::where('catégorie','like','%'.$search.'%')->get();
+        return response()->json($exercice);
+    }
 }
