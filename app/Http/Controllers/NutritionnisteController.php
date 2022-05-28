@@ -108,6 +108,25 @@ class NutritionnisteController extends Controller
         $nutritionniste = Nutritionniste::where('adresse','like','%'.$search.'%')->get();
         return response()->json($nutritionniste);
     }
+    public function ModifierImageNutritionniste(Request $request,$id){
+        try{
+            $nutritionniste = Nutritionniste::find($id);
+            if($request->hasFile("photo")){
+                $file = $request->file("photo");
+                $extension=$file->getClientOriginalExtension();
+                $filename=time().'.'.$extension;
+                $file->move('C:\pfe-main\public\image\Nutritionniste',$filename);
+                $nutritionniste->photo=$filename;
+                $res=$nutritionniste->save();
+                return response()->json($nutritionniste);
+            }
+        }catch(Exeption $e){
+            return response()->json([
+                "message" => $e->getMessage()
+            ]);
+        }
+        
+    }
    
 
     }

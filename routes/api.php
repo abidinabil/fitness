@@ -46,6 +46,7 @@ Route::group([
     Route::get('updateNutritionniste/{id}' , 'NutritionnisteController@updateNutritionniste');
     Route::put('editNutritionniste' , 'NutritionnisteController@editNutritionniste');
     Route::get('searchNutritionniste/{search}', 'NutritionnisteController@searchNutritionniste');
+    Route::post('ModifierImageNutritionniste/{id}' , 'NutritionnisteController@ModifierImageNutritionniste');
     /*****************************************Gestion Gym ************************* */
     Route::post('SaveGym', 'SalleController@SaveGym');
     Route::get('getGym', 'SalleController@getGym');
@@ -53,6 +54,7 @@ Route::group([
     Route::get('updateGym/{id}' , 'SalleController@updateGym');
     Route::put('editGym' , 'SalleController@editGym');
     Route::get('searchGym/{search}', 'SalleController@searchGym');
+    Route::post('ModifierImageGym/{id}' , 'SalleController@ModifierImageGym');
     /*****************************************Fin Gestion gym ******************* */
     Route::post('SaveExercice', 'ExerciceController@SaveExercice');
     Route::get('getExercice', 'ExerciceController@getExercice');
@@ -60,12 +62,15 @@ Route::group([
     Route::get('updateExercice/{id}' , 'ExerciceController@updateExercice');
     Route::put('editExercice' , 'ExerciceController@editExercice');
     Route::get('getExerciceDetails/{id}', 'ExerciceController@getExerciceDetails');
+    Route::post('ModifierImage/{id}' , 'ExerciceController@ModifierImage');
+    Route::post('ModifierImage2/{id}' , 'ExerciceController@ModifierImage2');
     Route::post('SaveCoach', 'CoachController@SaveCoach');
     Route::get('getCoach', 'CoachController@getCoach');
     Route::delete('deleteCoach/{id}' , 'CoachController@deleteCoach');
     Route::get('updateCoach/{id}' , 'CoachController@updateCoach');
     Route::put('editCoach' , 'CoachController@editCoach');
     Route::get('searchCoach/{search}', 'CoachController@searchCoach');
+    Route::post('ModifierImageCoach/{id}' , 'CoachController@ModifierImageCoach');
     Route::post('SaveSalle', 'SalleController@SaveSalle');
     Route::get('getSalle', 'SalleController@getSalle');
     Route::delete('deleteSalle/{id}' , 'SalleController@deleteSalle');
@@ -86,6 +91,7 @@ Route::group([
     Route::get('getExerciceByCategorie/{categorie}', 'ExerciceController@getExerciceByCategorie');
     Route::post('saveProduit', 'ProduitController@saveProduit');
     Route::get('updateProduit/{id}' , 'ProduitController@updateProduit');
+    Route::post('ModifierImageProduit/{id}' , 'ProduitController@ModifierImage');
     Route::get('getProduitByCategorie/{categorie}', 'ProduitController@getProduitByCategorie');
     Route::get('getProduit', 'ProduitController@getProduit');
     Route::delete('deleteProduit/{id}' , 'ProduitController@deleteProduit');
@@ -100,6 +106,7 @@ Route::group([
     Route::get('getAliment', 'AlimentController@getAliment');
     Route::delete('deleteAliment/{id}' , 'AlimentController@deleteAliment');
     Route::get('getNutritionDetails/{id}', 'NutritionController@getNutritionDetails');
+    Route::post('ModifierImageNutrition/{id}' , 'NutritionController@ModifierImageNutrition');
     Route::get('searchAliment/{search}', 'AlimentController@searchAliment');
     Route::get('getAlimentById/{id}', 'AlimentController@getAlimentById');
     Route::get('updateAliment/{id}' , 'AlimentController@updateAliment');

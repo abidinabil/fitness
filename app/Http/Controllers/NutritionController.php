@@ -104,6 +104,25 @@ class NutritionController extends Controller
               $nutrition
                 );
                }
+               public function ModifierImageNutrition(Request $request,$id){
+                try{
+                    $nutrition = Nutrition::find($id);
+                    if($request->hasFile("image")){
+                        $file = $request->file("image");
+                        $extension=$file->getClientOriginalExtension();
+                        $filename=time().'.'.$extension;
+                        $file->move('C:\pfe-main\public\image\Nutrition',$filename);
+                        $nutrition->image=$filename;
+                        $res=$nutrition->save();
+                        return response()->json($nutrition);
+                    }
+                }catch(Exeption $e){
+                    return response()->json([
+                        "message" => $e->getMessage()
+                    ]);
+                }
+                
+            }
         
 }
 

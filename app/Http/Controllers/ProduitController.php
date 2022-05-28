@@ -40,6 +40,25 @@ class ProduitController extends Controller
           $produit
             );
            }
+           public function ModifierImage(Request $request,$id){
+            try{
+                $produit = Produit::find($id);
+                if($request->hasFile("image")){
+                    $file = $request->file("image");
+                    $extension=$file->getClientOriginalExtension();
+                    $filename=time().'.'.$extension;
+                    $file->move('C:\pfe-main\public\image\boutique',$filename);
+                    $produit->image=$filename;
+                    $res=$produit->save();
+                    return response()->json($produit);
+                }
+            }catch(Exeption $e){
+                return response()->json([
+                    "message" => $e->getMessage()
+                ]);
+            }
+            
+        }
            public function getProduit(){
             $produit = Produit::all();
             return response()->json(
@@ -115,6 +134,8 @@ class ProduitController extends Controller
                                     $produit = Produit::find($id);
                                     return response()->json($produit);
                                   }
+
+                              
 
 
       

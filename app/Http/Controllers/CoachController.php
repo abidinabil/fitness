@@ -13,7 +13,7 @@ public function SaveCoach(Request $request){
 
     $file_extension =$request -> photo -> getClientOriginalExtension();
     $file_name =time().'.'.$file_extension;
-    $path ='C:\pfe-main\public\image';
+    $path ='C:\pfe-main\public\image\Coach';
     $request -> photo -> move($path,$file_name);
 
   
@@ -94,4 +94,24 @@ public function deleteCoach($id){
       $coach = Coach::where('adresse','like','%'.$search.'%')->get();
       return response()->json($coach);
   }
+
+  public function ModifierImageCoach(Request $request,$id){
+    try{
+        $coach = Coach::find($id);
+        if($request->hasFile("photo")){
+            $file = $request->file("photo");
+            $extension=$file->getClientOriginalExtension();
+            $filename=time().'.'.$extension;
+            $file->move('C:\pfe-main\public\image\Coach',$filename);
+            $coach->photo=$filename;
+            $res=$coach->save();
+            return response()->json($coach);
+        }
+    }catch(Exeption $e){
+        return response()->json([
+            "message" => $e->getMessage()
+        ]);
+    }
+    
+}
             }

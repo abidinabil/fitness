@@ -105,4 +105,23 @@ class SalleController extends Controller
         $gym = Salle::where('adresse','like','%'.$search.'%')->get();
         return response()->json($gym);
     }
+    public function ModifierImageGym(Request $request,$id){
+        try{
+            $gym = Salle::find($id);
+            if($request->hasFile("photo")){
+                $file = $request->file("photo");
+                $extension=$file->getClientOriginalExtension();
+                $filename=time().'.'.$extension;
+                $file->move('C:\pfe-main\public\image\Gym',$filename);
+                $gym->photo=$filename;
+                $res=$gym->save();
+                return response()->json($gym);
+            }
+        }catch(Exeption $e){
+            return response()->json([
+                "message" => $e->getMessage()
+            ]);
+        }
+        
+    }
 }

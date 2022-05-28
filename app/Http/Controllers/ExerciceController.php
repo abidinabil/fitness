@@ -97,4 +97,42 @@ class ExerciceController extends Controller
           }
 
           /*********************************** fin Edit coach *********************** */
+          public function ModifierImage(Request $request,$id){
+            try{
+                $exercice = Exercice::find($id);
+                if($request->hasFile("image")){
+                    $file = $request->file("image");
+                    $extension=$file->getClientOriginalExtension();
+                    $filename=time().'.'.$extension;
+                    $file->move('C:\pfe-main\public\image\Exercice',$filename);
+                    $exercice->image=$filename;
+                    $res=$exercice->save();
+                    return response()->json($exercice);
+                }
+            }catch(Exeption $e){
+                return response()->json([
+                    "message" => $e->getMessage()
+                ]);
+            }
+            
+        }
+        public function ModifierImage2(Request $request,$id){
+          try{
+              $exercice = Exercice::find($id);
+              if($request->hasFile("image1")){
+                  $file = $request->file("image1");
+                  $extension=$file->getClientOriginalExtension();
+                  $filename=time().'.'.$extension;
+                  $file->move('C:\pfe-main\public\image\Exercice',$filename);
+                  $exercice->image1=$filename;
+                  $res=$exercice->save();
+                  return response()->json($exercice);
+              }
+          }catch(Exeption $e){
+              return response()->json([
+                  "message" => $e->getMessage()
+              ]);
+          }
+          
+      }
 }
