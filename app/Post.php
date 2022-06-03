@@ -9,6 +9,6 @@ class Post extends Model
     protected $table = "posts";
 
     protected $fillable = [
-        'id_user', 'post', 'image'
+        'id_user', 'post', 'image','etat'
     ];
 }

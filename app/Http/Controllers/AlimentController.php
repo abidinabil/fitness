@@ -83,4 +83,11 @@ class AlimentController extends Controller
       $aliment = Aliment::where('id',$id)->first();
       return response()->json($aliment);
   }
+  public function updateAlimentUser($name){
+    $aliment = Aliment::where('name','=',$name)->first();;
+    return response()->json(
+        
+      $aliment
+        );
+       }
 }

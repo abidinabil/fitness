@@ -10,7 +10,7 @@ class BasketController extends Controller
 {
 
     public function addToCart(Request $request , $user_id , $produit_id){
-      
+      try{
         $qty = 1;
         $produit = Produit::find($produit_id)->first();
        //todo insert inside backet if not existe and update if exist
@@ -24,13 +24,15 @@ class BasketController extends Controller
              
 
            ]);
-       } else {
+       }} catch(Exeception $e) {
         return response()->json([
-            'message' =>'Produit Mawjoud',
-            'code' => 100,
+            'message' =>$e->getMessage(),
+            
             
         ]);
        }
+      
+      
      $basket_count = Basket::where('id_produits', $produit_id)->where('id_user', $user_id)->count();
      return response()->json(["basket_count" => $basket_count], 200);  
     }
@@ -43,6 +45,22 @@ class BasketController extends Controller
         ->where('users.id',$id)
         ->get();
         return response()->json($produit);   
+    }
+    public function deleteProduitPanier($id){
+        $produit = Basket :: find($id);
+        if($produit){
+            $produit -> delete ();
+            return response()->json([
+             'message' =>'Produit deleted succesfully',
+             'code' => 200,
+             
+            
+         ]);
+
+        }else {
+             return response()->json([
+             'message' =>"Produit with id:$id does not exist",   ]);
+        }
     }
    
 }

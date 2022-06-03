@@ -96,6 +96,7 @@ Route::group([
     Route::post('ModifierImageProduit/{id}' , 'ProduitController@ModifierImage');
     Route::get('getProduitByCategorie/{categorie}', 'ProduitController@getProduitByCategorie');
     Route::get('getProduit', 'ProduitController@getProduit');
+    Route::get('getProduitPaginate', 'ProduitController@getProduitPaginate');
     Route::delete('deleteProduit/{id}' , 'ProduitController@deleteProduit');
     Route::get('getProduitMens/{sous_categorie}', 'ProduitController@getProduitMens');
     Route::get('getProduitWomens/{sous_categorie}', 'ProduitController@getProduitWomens');
@@ -104,8 +105,10 @@ Route::group([
     Route::get('getProductDetails/{id}', 'ProduitController@getProductDetails');
     Route::post('addToCart/{user_id}/{produit_id}', 'BasketController@addToCart');
     Route::get('getProduitUser/{id}', 'BasketController@getProduitUser');
+    Route::delete('deleteProduitPanier/{id}', 'BasketController@deleteProduitPanier');
     Route::post('SaveAliment', 'AlimentController@SaveAliment');
     Route::get('getAliment', 'AlimentController@getAliment');
+    Route::get('updateAlimentUser/{name}', 'AlimentController@updateAlimentUser');
     Route::delete('deleteAliment/{id}' , 'AlimentController@deleteAliment');
     Route::get('getNutritionDetails/{id}', 'NutritionController@getNutritionDetails');
     Route::post('ModifierImageNutrition/{id}' , 'NutritionController@ModifierImageNutrition');
@@ -116,7 +119,7 @@ Route::group([
     Route::post('SaveRegime', 'RegimeController@SaveRegime');
     Route::delete('deleteRegime/{id}', 'RegimeController@deleteRegime');
     Route::get('updateRegime/{id}' , 'RegimeController@updateRegime');
-    Route::put('editRegime' , 'RegimeController@editRegime');
+    Route::post('editRegimeUser/{id}' , 'RegimeController@editRegimeUser');
     Route::get('getRegimeByPdejuner/{id}', 'RegimeController@getRegimeByPdejuner');
     Route::get('getRegimeByDejuner/{id}', 'RegimeController@getRegimeByDejuner');
     Route::get('getRegimeByDinner/{id}', 'RegimeController@getRegimeByDinner');
@@ -134,6 +137,10 @@ Route::group([
     Route::post('updateImage/{id}' , 'UserController@updateimage');
     Route::post('SavePost', 'PostController@SavePost');
     Route::get('getPost', 'PostController@getPost');
+    Route::get('getAllPost', 'PostController@getAllPost');
+    Route::post('AccepterPost/{id}','PostController@AccepterPost');
+    Route::post('RefuserPost/{id}','PostController@RefuserPost');
+    Route::get('getPostUser/{id}', 'PostController@getPostUser');
     Route::get('updatePost/{id}' , 'PostController@updatePost');
     Route::put('editPost' , 'PostController@editPost');
     Route::delete('deletePost/{id}' , 'PostController@deletePost');
@@ -145,6 +152,8 @@ Route::group([
   
     Route::post('SaveEnregistrement/{id_user}/{id_posts}', 'EnregistrementController@SaveEnregistrement');
     Route::get('getEnregistrementUser/{id}', 'EnregistrementController@getEnregistrementUser');
+    Route::delete('deleteEnregistrement/{id}' , 'EnregistrementController@deleteEnregistrement');
+     Route::post('storeCart', 'OrderController@storeCart');
 
  
   

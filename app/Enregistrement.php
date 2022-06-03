@@ -9,6 +9,6 @@ class Enregistrement extends Model
     protected $table = "enregistrements";
 
     protected $fillable = [
-        'id_posts' ,'id_user'
+        'id_posts' ,'id_users'
     ];
 }

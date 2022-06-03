@@ -64,18 +64,16 @@ public function deleteRegime($id){
  /***********************************Fin Update regime ******************* */
 
   /***********************************Edit regime *********************** */
-  public function editRegime(){
+  public function editRegimeUser(Request $request ,$id){
     
-    $regime = Regime::find(request()->id);
-    $regime->name = request()->name;
-    $regime->qty = request()->qty;
-    $regime->calorie = request()->calorie;
-
-    $regime->carbs = request()->carbs;
-    $regime->fat = request()->fat;
-    $regime->proteine = request()->proteine;
-    $regime->categorieType = request()->categorieType;
-    $regime->update();
+    $regime = Regime::find($id)->update([
+      'qty' => $request->qty,
+      'calorie' => $request->calorie,
+      'grammage' => $request->grammage,
+      'fat' => $request->fat,
+      'carbs' => $request->carbs,
+      'proteine' => $request->proteine,
+    ]);
     return 'ok';
 
   }
@@ -117,5 +115,7 @@ public function deleteRegime($id){
                       $regime
                         );
                        }
+
+                       
          
 }

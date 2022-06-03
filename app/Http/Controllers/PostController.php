@@ -19,6 +19,7 @@ class PostController extends Controller
             'id_user'=> request()->id_user,
             'post'=> request()->post,
             'image'=> $file_name,
+          
     
     
         ]);
@@ -30,6 +31,7 @@ class PostController extends Controller
   public function getPost(){
     $post = DB::table('users')
     ->join('posts','posts.id_user','users.id')
+    ->where('etat',1)
     ->get();
     return response()->json($post);   
 }
@@ -91,4 +93,43 @@ class PostController extends Controller
         }
         
     }
+    public function getPostUser($id){
+        $post = Post::where('id_user','=',$id)
+      
+        ->get();
+        return response()->json(
+            
+          $post
+            );
+           }
+
+           public function getAllPost(){
+            $post = DB::table('users')
+            ->join('posts','posts.id_user','users.id')
+           
+            ->get();
+            return response()->json($post);   
+        }
+
+        public function AccepterPost(Request $request ,$id){
+    
+            $post = Post::find($id)->update([
+              'etat' => $request->etat,
+             
+            ]);
+            return 'ok';
+        
+          }
+          public function RefuserPost(Request $request ,$id){
+    
+            $post = Post::find($id)->update([
+              'etat' => $request->etat,
+             
+            ]);
+            return 'ok';
+        
+          }
+
+
+         
 }

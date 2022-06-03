@@ -18,8 +18,8 @@ class CreateEnregistrementsTable extends Migration
          
             $table->unsignedBigInteger('id_posts');
             $table->foreign('id_posts')->references('id')->on('posts')->onDelete('cascade');
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('id_users');
+            $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
