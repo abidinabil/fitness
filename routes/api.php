@@ -156,7 +156,6 @@ Route::group([
      Route::post('storeCart', 'OrderController@storeCart');
 
  
-  
-
+  Route::post('commande/{id_user}','CommandeController@commande');
 });
 

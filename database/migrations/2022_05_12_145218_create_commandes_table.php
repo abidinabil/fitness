@@ -13,11 +13,26 @@ class CreateCommandesTable extends Migration
      */
     public function up()
     {
+        if(!Schema::hasTable('commandes')){
+
+
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
-          
+            $table->integer('id_produits');
+            
+            $table->integer('id_user');
+            $table->string('name');
+            $table->string('adresse');
+            $table->integer('Ntlfn');
+            $table->integer('CodePostal');
+         
+            
+            $table->string('qty')->nullable();
+            $table->string('Total')->nullable();
             $table->timestamps();
         });
+    }
+
     }
 
     /**
